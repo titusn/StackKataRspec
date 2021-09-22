@@ -11,48 +11,35 @@ import static com.mscharhag.oleaster.matcher.Matchers.*;
 public class StackTest {
     private Stack stack;
     {
-        beforeEach(() -> {
-            stack = new Stack();
-        });
-        describe("A new stack", () -> {
+        describe("Given an new stack", () -> {
+            beforeEach(() -> {
+                stack = new Stack();
+            });
+
             it("should be empty", () -> {
                 expect(stack.isEmpty()).toEqual(true);
             });
-
-            it("throws an exception when you try to pop", () -> {
+            it("should throw an exception", () ->{
                 expect(() -> {
                     stack.pop();
                 }).toThrow(EmptyStackException.class);
             });
-
-            it("should not be empty after push", () -> {
-                stack.push(2);
+            it("after a push it should not be empty", () ->{
+                stack.push(3);
                 expect(stack.isEmpty()).toEqual(false);
             });
         });
-        describe("A stack containing one element", () -> {
+        describe("Given a stack containing one element", () ->{
             beforeEach(() -> {
                 stack = new Stack();
-                stack.push(5);
+                stack.push(7);
             });
-            it("should return the previously pushed number when popped", () -> {
-                expect(stack.pop()).toEqual(5);
+            describe("when popped", () -> {
+                it("should be empty", () -> {
+                    stack.pop();
+                    expect(stack.isEmpty()).toEqual(true);
+                });
             });
-            it("should be empty after pop", () -> {
-                stack.pop();
-                expect(stack.isEmpty()).toEqual(true);
-            });
-        });
-        describe("A stack containing two elements", () -> {
-            beforeEach(() -> {
-                stack = new Stack();
-                stack.push(4);
-                stack.push(17);
-            });
-        });
-        it("should return the first number on the second pop", () ->{
-            stack.pop();
-            expect(stack.pop()).toEqual(4);
         });
     }
 }
