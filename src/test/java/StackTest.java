@@ -50,5 +50,9 @@ public class StackTest {
                 stack.push(17);
             });
         });
+        it("should return the first number on the second pop", () ->{
+            stack.pop();
+            expect(stack.pop()).toEqual(4);
+        });
     }
 }
